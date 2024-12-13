@@ -1,0 +1,165 @@
+# Async API Specification Models
+
+This is a plain Java representation of Async API specification.
+
+## Roadmap
+
+1. Describe the POJOs for the maximum number of objects defined in the spec.
+
+## Limitations
+
+* All objects do not support extending via the [Specification Extensions](https://github.com/asyncapi/spec/blob/master/spec/asyncapi.md#specification-extensions) (with `x-*` properties).
+
+## Models
+
+- [ ] `AsyncAPI`
+  - [x] `asyncapi`: `String`
+  - [x] `id`: `String`
+  - [x] `info`: `Info`
+  - [x] `servers`: `Servers(Map<String, Server>)`
+  - [x] `defaultContentType`: `String`
+  - [ ] `channels`: `Channels(Map<String, Channel>)`
+  - [ ] `operations`: `Operations(Map<String, Operation>)`
+  - [ ] `components`: `Components`
+- [x] `Info`
+  - [x] `title`: `String`
+  - [x] `version`: `String`
+  - [x] `description`: `String`
+  - [x] `termsOfService`: `String`
+  - [x] `contact`: `Contact`
+  - [x] `license`: `License`
+- [x] `Contact`
+  - [x] `name`: `String`
+  - [x] `url`: `String`
+  - [x] `email`: `String`
+- [x] `License`
+  - [x] `name`: `String`
+  - [x] `url`: `String`
+- [x] `Server`
+  - [x] `$ref`: `String`
+  - [x] `host`: `String`
+  - [x] `protocol`: `String`
+  - [x] `protocolVersion`: `String`
+  - [x] `pathname`: `String`
+  - [x] `description`: `String`
+  - [x] `title`: `String`
+  - [x] `summary`: `String`
+  - [x] `variables`: `Map<String, ServerVariable>`
+  - [x] `security`: `[SecurityScheme]`
+  - [x] `tags`: `Tags([Tag])`
+  - [x] `externalDocs`: `ExternalDocumentation`
+  - [x] `bindings`: `ServerBindings`
+- [x] `ServerVariable`
+  - [x] `$ref`: `String`
+  - [x] `enum`: `[String]`
+  - [x] `default`: `String`
+  - [x] `description`: `String`
+  - [x] `examples`: `[String]`
+- [x] `SecurityScheme`
+  - [x] `$ref`: `String`
+  - [x] `type`: `String`
+  - [x] `description`: `String`
+  - [x] `name`: `String`
+  - [x] `in`: `String`
+  - [x] `scheme`: `String`
+  - [x] `bearerFormat`: `String`
+  - [x] `flows`: `OAuthFlows`
+  - [x] `openIdConnectUrl`: `String`
+  - [x] `scopes`: `[String]`
+- [x] `Tag`
+  - [x] `name`: `String`
+  - [x] `description`: `String`
+  - [x] `externalDocs`: `ExternalDocumentation`
+- [x] `ExternalDocumentation`
+  - [x] `$ref`: `String`
+  - [x] `description`: `String`
+  - [x] `url`: `String`
+- [x] `OAuthFlows`
+  - [x] `implicit`: `OAuthFlow`
+  - [x] `password`: `OAuthFlow`
+  - [x] `clientCredentials`: `OAuthFlow`
+  - [x] `authorizationCode`: `OAuthFlow`
+- [x] `OAuthFlow`
+  - [x] `authorizationUrl`: `String`
+  - [x] `tokenUrl`: `String`
+  - [x] `refreshUrl`: `String`
+  - [x] `availableScopes`: `Map<String, String>`
+- [ ] `ServerDindings` **NOT IMPLEMENTED**
+  - [x] `$ref`: `String`
+- [x] `Channel`
+  - [x] `$ref`: `String`
+  - [x] `address`: `String`
+  - [x] `messages`: `Messages(Map<String, Message>)`
+  - [x] `title`: `String`
+  - [x] `summary`: `String`
+  - [x] `description`: `String`
+  - [x] `servers`: `Reference`
+  - [x] `parameters`: `Parameters(Map<String, Parameter>)`
+  - [x] `tags`: `Tags([Tag])`
+  - [x] `externalDocs`: `ExternalDocumentation`
+  - [x] `bindings`: `ChannelBindings`
+- [ ] `ChannelBindings` **NOT IMPLEMENTED**
+  - [x] `$ref`: `String`
+- [ ] `Message`
+  - [x] `$ref`: `String`
+  - [ ] `headers`
+  - [ ] `payload`
+  - [ ] `correlationId`
+  - [x] `contentType`: `String`
+  - [x] `name`: `String`
+  - [x] `title`: `String`
+  - [x] `summary`: `String`
+  - [x] `description`: `String`
+  - [x] `tags`: `Tags([Tag])`
+  - [x] `externalDocs`: `ExternalDocumentation`
+  - [ ] `bindings`: `MessageBindings`
+  - [x] `examples`: `[MessageExample]`
+  - [ ] `traits`
+- [ ] `MessageBindings` **NOT IMPLEMENTED**
+  - [x] `$ref`: `String`
+- [ ] `MessageExample`
+  - [ ] `headers`: `Map<String, Any>`
+  - [ ] `payload` `Map<String, Any>`
+  - [x] `name`: `String`
+  - [x] `summary`: `String`
+- [x] `Parameter`
+  - [x] `$ref`: `String`
+  - [x] `enum`: `[String]`
+  - [x] `default`: `String`
+  - [x] `description`: `String`
+  - [x] `examples`: `[String]`
+  - [x] `location`: `String`
+- [ ] `Operation`
+  - [x] `$ref`: `String`
+  - [x] `action`: `Enum[send,receive]`
+  - [x] `channel`: `Channel`
+  - [x] `title`: `String`
+  - [x] `summary`: `String`
+  - [x] `description`: `String`
+  - [x] `security`: `SecurityScheme`
+  - [x] `tags`: `Tags([Tag])`
+  - [x] `externalDocs`: `ExternalDocumentation`
+  - [x] `bindings`: `OperationBindings`
+  - [x] `traits`: `[OperationTrait]`
+  - [x] `messages`: `[Message]`
+  - [x] `reply`: `OperationReply`
+- [ ] `OperationBindings` **NOT IMPLEMENTED**
+  - [x] `$ref`: `String`
+- [x] `OperationReply`
+  - [x] `$ref`: `String`
+  - [x] `address`: `OperationReplyAddress`
+  - [x] `channel`: `Channel`
+  - [x] `messages`: `[Message]`
+- [x] `OperationReplyAddress`
+  - [x] `$ref`: `String`
+  - [x] `description`: `String`
+  - [x] `location`: `String`
+- [x] `OperationTrait`
+  - [x] `$ref`: `String`
+  - [x] `title`: `String`
+  - [x] `summary`: `String`
+  - [x] `description`: `String`
+  - [x] `security`: `SecurityScheme`
+  - [x] `tags`: `Tags([Tag])`
+  - [x] `externalDocs`: `ExternalDocumentation`
+  - [x] `bindings`: `OperationBindings`
