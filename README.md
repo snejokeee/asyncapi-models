@@ -4,7 +4,8 @@ This is a plain Java representation of Async API specification.
 
 ## Roadmap
 
-1. Describe the POJOs for the maximum number of objects defined in the spec.
+1. Create a minimal required models to work with RabbitMQ
+2. Describe the POJOs for the maximum number of objects defined in the spec.
 
 ## Limitations
 
